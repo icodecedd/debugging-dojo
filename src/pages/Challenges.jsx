@@ -8,9 +8,9 @@ import FadeContent from "@/blocks/Animations/FadeContent/FadeContent";
 import { challenges } from "@/data/questions.js";
 import { toaster } from "@/components/ui/toaster";
 import { FaBullseye } from "react-icons/fa6";
-import CodeBlockContainer from "@/components/CodeBlockContainer";
-import AnswerContainer from "@/components/AnswerContainer";
-import ResultDialog from "@/components/ResultDialog";
+import { CodeBlockContainer } from "@/components/CodeBlockContainer";
+import { AnswerContainer } from "@/components/AnswerContainer";
+import { ResultDialog } from "@/components/ResultDialog";
 
 const Challenges = () => {
   const [currentChallenge, setCurrentChallenge] = useState(

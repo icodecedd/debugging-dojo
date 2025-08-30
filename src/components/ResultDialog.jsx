@@ -114,5 +114,3 @@ export const ResultDialog = ({ isOpen, onClose, accuracy, onPlayAgain }) => {
     </Dialog.Root>
   );
 };
-
-export default ResultDialog;
