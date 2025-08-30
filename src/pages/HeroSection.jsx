@@ -88,7 +88,7 @@ const HeroSection = () => {
             fontSize={{ base: "md", md: "lg" }}
             color="gray.400"
             textAlign="center"
-            maxW={{ base: "90%", md: "800px" }}
+            maxW={{ base: "100%", md: "800px" }}
           >
             Join our IT community challenge! Spot the bugs, fix the errors, and
             climb the leaderboard.{" "}
@@ -105,7 +105,11 @@ const HeroSection = () => {
           easing="ease-out"
           initialOpacity={0}
         >
-          <Flex gap={4} direction={{ base: "column", md: "row" }} mt={8}>
+          <Flex
+            gap={4}
+            direction={{ base: "column", md: "row" }}
+            mt={{ base: 4, md: 8 }}
+          >
             <FeatureCard
               icon={FaLaptopCode}
               title="Real Code"
@@ -125,30 +129,25 @@ const HeroSection = () => {
         </FadeContent>
 
         {/* Button */}
-        <AnimatedContent
-          distance={150}
-          direction="vertical"
-          reverse={false}
-          duration={1}
-          ease="power3.out"
+        <FadeContent
+          blur={true}
+          duration={500}
+          easing="ease-out"
           initialOpacity={0}
-          animateOpacity
-          scale={1.1}
-          threshold={0.1}
         >
           <Button
             as={RouterLink}
             to="/challenges"
-            size="lg"
+            size={{ base: "md", md: "lg" }}
             color="white"
             borderRadius="md"
-            mt={8}
+            mt={{ base: 2, md: 8 }}
             bg="purple.600"
             _hover={{ bg: "purple.500" }}
           >
             Start Challenge
           </Button>
-        </AnimatedContent>
+        </FadeContent>
       </Stack>
     </Container>
   );

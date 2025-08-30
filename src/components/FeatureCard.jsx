@@ -19,10 +19,10 @@ export const FeatureCard = ({ icon: Icon, title, description }) => {
           <Icon aria-label={`${title} icon`} size="2rem" color="#7c7cc2ff" />
         )}
 
-        <Card.Title fontSize="xl" mt={2}>
+        <Card.Title fontSize={{ base: "lg", md: "xl" }} mt={2} color="white">
           {title}
         </Card.Title>
-        <Card.Description>{description}</Card.Description>
+        <Card.Description fontSize={{ base: "sm", md: "md" }}>{description}</Card.Description>
       </Card.Body>
     </Card.Root>
   );

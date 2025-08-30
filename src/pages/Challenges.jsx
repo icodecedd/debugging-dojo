@@ -175,7 +175,7 @@ const Challenges = () => {
               <Button
                 variant="ghost"
                 as={RouterLink}
-                to="/"
+                to="/debugging-dojo"
                 colorScheme="purple"
                 borderRadius="xl"
                 size="sm"
