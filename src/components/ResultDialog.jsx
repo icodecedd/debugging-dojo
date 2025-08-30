@@ -82,7 +82,7 @@ export const ResultDialog = ({ isOpen, onClose, accuracy, onPlayAgain }) => {
                   <Button
                     variant="ghost"
                     as={RouterLink}
-                    to="/debugging-dojo"
+                    to="/"
                     colorScheme="purple"
                     borderRadius="xl"
                     size="lg"

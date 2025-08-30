@@ -8,7 +8,7 @@ function App() {
     <>
       <Toaster />
       <Routes>
-        <Route path="/debugging-dojo" element={<HeroSection />} />
+        <Route path="/" element={<HeroSection />} />
         <Route path="/challenges" element={<Challenges />} />
       </Routes>
     </>
