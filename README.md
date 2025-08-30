@@ -25,6 +25,8 @@ It provides students and developers with a dynamic platform to identify and desc
 
 ## ✨ Features
 
+<div align="center">
+
 | 🎯 Core Functionality | 🔧 Technical Features |
 |------------------------|------------------------|
 | ✅ **Multi-Language Support**: JavaScript, Java, Python, C | ✅ **Syntax Highlighting**: Powered by Shiki with GitHub themes |
@@ -32,6 +34,8 @@ It provides students and developers with a dynamic platform to identify and desc
 | ✅ **Hint System**: Up to 3 hints per challenge | ✅ **Real-time Feedback**: Success/error toasts with dismissal |
 | ✅ **Accuracy Tracking**: Monitor correct answers and success rate | ✅ **Modern UI**: Dark theme with purple accents, 2xl border radius |
 | ✅ **Result Dialog**: Displays final accuracy upon completion | ✅ **Error Handling**: Robust answer validation and state management |
+
+</div>
 
 ---
 
