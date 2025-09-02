@@ -22,6 +22,7 @@ export const CodeBlockContainer = ({ challenge }) => {
         code={challenge.code}
         language={challenge.language}
         size="xl"
+        meta={{ wordWrap: true }}
         p={6}
         mb={6}
         position="relative"
