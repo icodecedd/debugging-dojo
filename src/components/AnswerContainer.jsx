@@ -15,6 +15,7 @@ export const AnswerContainer = ({
   handleAnswerChange,
   handleSubmitAnswer,
   currentHintState,
+  setCurrentHintState,
   handleHint,
   challenge,
 }) => {
@@ -26,7 +27,7 @@ export const AnswerContainer = ({
       mb={6}
       transition="border-color 0.2s ease"
     >
-      <Heading fontSize="xl" mb={6}>
+      <Heading fontSize="xl" mb={6} color="white">
         What's the answer?
       </Heading>
       {currentHintState.showHint && (

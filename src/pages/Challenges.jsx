@@ -241,6 +241,7 @@ const Challenges = () => {
           handleAnswerChange={handleAnswerChange}
           handleSubmitAnswer={handleSubmitAnswer}
           currentHintState={currentHintState}
+          setCurrentHintState={setCurrentHintState}
           handleHint={handleHint}
           challenge={challenges[currentChallenge]}
         />
