@@ -5,6 +5,7 @@ import {
   CloseButton,
   Flex,
   Heading,
+  Text,
   Textarea,
 } from "@chakra-ui/react";
 import { FaLightbulb } from "react-icons/fa6";
@@ -21,11 +22,14 @@ export const AnswerContainer = ({
 }) => {
   return (
     <Box
-      p={6}
+      p={{ base: 4, md: 6 }}
       borderRadius="2xl"
-      bg="#212428"
+      bg="gray.800"
+      border="1px"
+      borderColor="purple.600"
       mb={6}
-      transition="border-color 0.2s ease"
+      position="relative"
+      boxShadow="lg"
     >
       <Heading fontSize="xl" mb={6} color="white">
         What's the answer?
@@ -33,7 +37,7 @@ export const AnswerContainer = ({
       {currentHintState.showHint && (
         <Alert.Root
           variant="subtle"
-          borderRadius="xl"
+          borderRadius="lg"
           bg="#38362e"
           color="#ecce52"
           mb={4}
@@ -54,6 +58,8 @@ export const AnswerContainer = ({
           />
         </Alert.Root>
       )}
+
+      {/* Answer form */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -67,8 +73,8 @@ export const AnswerContainer = ({
           size="lg"
           resize="none"
           h="120px"
-          borderRadius="2xl"
-          bg="#282c32"
+          borderRadius="lg"
+          bg="gray.700"
           color="white"
           mb={2}
           value={answer}
@@ -85,17 +91,16 @@ export const AnswerContainer = ({
         <Flex justifyContent="space-between" alignItems="center" mt={2} gap={4}>
           <Button
             flex="1"
-            bg="purple.500"
+            bg="purple.600"
             color="white"
             size="lg"
             type="submit"
-            bgColor="purple.600"
-            borderRadius="xl"
+            borderRadius="lg"
             _hover={{
               bg: "purple.500",
             }}
           >
-            <GoCheck /> Submit
+            <GoCheck /> <Text mt={1}>Submit</Text>
           </Button>
           <Button
             disabled={
@@ -105,15 +110,16 @@ export const AnswerContainer = ({
             variant="ghost"
             onClick={handleHint}
             colorScheme="purple"
-            borderRadius="xl"
+            borderRadius="lg"
             size="sm"
             color="gray.400"
             _hover={{
-              bg: "purple.500",
+              bg: "purple.600",
               color: "white",
             }}
           >
-            <FaLightbulb /> Hint: {currentHintState.numberOfHintsLeft}
+            <FaLightbulb />{" "}
+            <Text mt={1.5}>Hint: {currentHintState.numberOfHintsLeft}</Text>
           </Button>
         </Flex>
       </form>
