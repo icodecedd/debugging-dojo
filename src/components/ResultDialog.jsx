@@ -63,38 +63,39 @@ export const ResultDialog = ({ isOpen, onClose, accuracy, onPlayAgain }) => {
               <Flex gap={4} w="full" justify="center">
                 <Dialog.ActionTrigger asChild>
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     onClick={onPlayAgain}
                     colorScheme="purple"
-                    borderRadius="xl"
-                    size="lg"
-                    color="gray.400"
+                    borderRadius="lg"
+                    size={{ base: "sm", md: "md" }}
+                    color="purple.300"
+                    borderColor="purple.500"
                     _hover={{
-                      bg: "purple.500",
+                      bg: "purple.600",
                       color: "white",
                     }}
-                    leftIcon={<RiResetLeftFill />}
                   >
-                    Play Again
+                    <RiResetLeftFill aria-label="Reset icon" />
+                    <Text ml={1}>Play Again</Text>
                   </Button>
                 </Dialog.ActionTrigger>
                 <Dialog.ActionTrigger asChild>
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     as={RouterLink}
                     to="/"
                     colorScheme="purple"
-                    borderRadius="xl"
-                    size="lg"
-                    color="gray.400"
+                    borderRadius="lg"
+                    size={{ base: "sm", md: "md" }}
+                    color="purple.300"
+                    borderColor="purple.500"
                     _hover={{
-                      bg: "purple.500",
+                      bg: "purple.600",
                       color: "white",
                     }}
-                    leftIcon={<FaHome />}
-                    onClick={onClose}
                   >
-                    Home
+                    <FaHome aria-label="Home icon" />
+                    <Text ml={1}>Home</Text>
                   </Button>
                 </Dialog.ActionTrigger>
               </Flex>

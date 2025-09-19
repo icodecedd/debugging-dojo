@@ -43,32 +43,33 @@ export const CodeBlockContainer = ({ challenge }) => {
               w="12px"
               h="12px"
               borderRadius="full"
-              bg="red.500"
-              _hover={{ bg: "red.600" }}
+              bg="red.400"
+              _hover={{ bg: "red.500" }}
             />
             <Box
               w="12px"
               h="12px"
               borderRadius="full"
-              bg="yellow.500"
-              _hover={{ bg: "yellow.600" }}
+              bg="yellow.400"
+              _hover={{ bg: "yellow.500" }}
             />
             <Box
               w="12px"
               h="12px"
               borderRadius="full"
-              bg="green.500"
-              _hover={{ bg: "green.600" }}
+              bg="green.400"
+              _hover={{ bg: "green.500" }}
             />
           </Box>
           <Text
             position="absolute"
             top="16px"
             right="24px"
-            fontSize={"xs"}
-            color="gray.400"
+            fontSize={{ base: "xs", md: "sm" }}
+            color="gray.300"
+            fontWeight="medium"
           >
-            debug-challenge.js
+            {`${challenge.title}.${challenge.language}`}
           </Text>
         </Flex>
         <CodeBlock.Content mt={6}>

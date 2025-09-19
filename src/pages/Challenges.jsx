@@ -5,7 +5,7 @@ import { FaHome } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
 import Squares from "@/blocks/Backgrounds/Squares/Squares";
 import FadeContent from "@/blocks/Animations/FadeContent/FadeContent";
-import { challenges } from "@/data/questions.js";
+import { challenges } from "@/constants/questions.js";
 import { toaster } from "@/components/ui/toaster";
 import { FaBullseye } from "react-icons/fa6";
 import { CodeBlockContainer } from "@/components/CodeBlockContainer";
@@ -49,6 +49,15 @@ const Challenges = () => {
       ans.toLowerCase()
     );
     const isCorrect = validAnswers.includes(userAnswer);
+
+    if (!userAnswer) {
+      toaster.create({
+        title: "Please enter an answer",
+        type: "error",
+        closable: true,
+      });
+      return;
+    }
 
     setAttemptsInfo((prev) => ({
       totalAttempts: prev.totalAttempts + 1,
@@ -122,7 +131,13 @@ const Challenges = () => {
   };
 
   return (
-    <Container as="section" minH="100vh" p={{ base: 10, md: 20 }} maxW="100%">
+    <Container
+      as="section"
+      minH="100vh"
+      p={{ base: 4, md: 12 }}
+      maxW="100%"
+      bg="gray.900"
+    >
       <Box position="absolute" inset={0}>
         <Squares
           speed={0.5}
@@ -132,6 +147,7 @@ const Challenges = () => {
           hoverFillColor="#222"
         />
       </Box>
+
       <FadeContent
         blur={true}
         duration={600}
@@ -139,74 +155,89 @@ const Challenges = () => {
         initialOpacity={0}
       >
         <Box
-          p={6}
+          p={{ base: 4, md: 6 }}
           borderRadius="2xl"
-          bg="#212428"
+          bg="gray.800"
+          border="1px"
+          borderColor="purple.600"
           mb={6}
           position="relative"
-          transition="border-color 0.2s ease"
+          boxShadow="lg"
+          mt={{ base: 0, md: 8 }}
         >
           <Flex
             direction={{ base: "column", lg: "row" }}
-            align={{ base: "center", md: "center" }}
+            align="center"
             justify="space-between"
+            gap={4}
           >
-            <Flex
-              direction="row"
-              gap={2}
-              mb={{ base: 4, lg: 0 }}
-              order={{ base: 1, lg: 3 }}
-            >
+            {/* Buttons */}
+            <Flex direction="row" gap={3} order={{ base: 1, lg: 3 }}>
               <Button
-                variant="ghost"
+                variant="outline"
                 onClick={handleResetChallenge}
                 colorScheme="purple"
-                borderRadius="xl"
-                size="sm"
-                color="gray.400"
+                borderRadius="lg"
+                size={{ base: "sm", md: "md" }}
+                color="purple.300"
+                borderColor="purple.500"
                 _hover={{
-                  bg: "purple.500",
+                  bg: "purple.600",
                   color: "white",
                 }}
               >
-                <RiResetLeftFill />
-                Reset
+                <RiResetLeftFill aria-label="Reset icon" />
+                <Text ml={1}>Reset</Text>
               </Button>
               <Button
-                variant="ghost"
+                variant="outline"
                 as={RouterLink}
                 to="/"
                 colorScheme="purple"
-                borderRadius="xl"
-                size="sm"
-                color="gray.400"
+                borderRadius="lg"
+                size={{ base: "sm", md: "md" }}
+                color="purple.300"
+                borderColor="purple.500"
                 _hover={{
-                  bg: "purple.500",
+                  bg: "purple.600",
                   color: "white",
                 }}
               >
-                <FaHome />
-                Home
+                <FaHome aria-label="Home icon" />
+                <Text ml={1}>Home</Text>
               </Button>
             </Flex>
+
+            {/* Challenge Info */}
             <Box
               textAlign="center"
               flex="1"
               mx={{ base: 0, lg: 6 }}
-              mb={{ base: 4, lg: 0 }}
               order={{ base: 2, md: 2 }}
             >
-              <Heading fontSize="2xl" color="purple.500" mb={1}>
-                Challenge {progress}: {challenges[currentChallenge].title}
+              <Heading
+                fontSize={{ base: "xl", md: "2xl" }}
+                color="purple.300"
+                mb={2}
+                fontWeight="extrabold"
+                letterSpacing="tight"
+              >
+                Mission {progress}: {challenges[currentChallenge].title}
               </Heading>
-              <Text fontSize="md" color="gray.300">
+              <Text
+                fontSize={{ base: "sm", md: "md" }}
+                color="gray.300"
+                maxW="600px"
+                mx="auto"
+              >
                 {challenges[currentChallenge].text}
               </Text>
             </Box>
+            {/* Accuracy */}
             <Box textAlign="center" order={{ base: 3, lg: 1 }}>
               <Text
                 fontSize="sm"
-                fontWeight="medium"
+                fontWeight="semibold"
                 color="purple.400"
                 mb={1}
                 display="flex"
@@ -214,10 +245,10 @@ const Challenges = () => {
                 gap={2}
                 justifyContent="center"
               >
-                <FaBullseye /> Accuracy
+                <FaBullseye aria-label="Accuracy icon" /> Accuracy
               </Text>
               <Text
-                fontSize="2xl"
+                fontSize={{ base: "xl", md: "2xl" }}
                 fontWeight="bold"
                 color={
                   accuracy >= 80
