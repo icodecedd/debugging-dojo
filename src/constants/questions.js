@@ -1,304 +1,209 @@
 export const challenges = [
   {
     title: "Python Challenge",
-    text: "There's something wrong with the formatting in this code. Identify and correct the issue.",
+    text: "Complete the code below to calculate the sum of numbers in a list.",
     code: `def calculate_sum(numbers):
-total = 0
-for num in numbers:
-  total += num
-return total`,
+    total = 0
+    for num in numbers:
+        total += ___
+    return total
+
+print(calculate_sum([1, 2, 3, 4]))`,
     language: "python",
-    answers: [
-      "indentation error",
-      "indentation",
-      "wrong indentation",
-      "no indentation",
-      "missing indentation",
-      "formatting error",
-      "whitespace error",
-    ],
-    hint: "Check the alignment of each line inside the function.",
+    answers: ["num"],
+    expectedOutput: `6`,
+    hint: "What variable are you iterating over in the for loop?",
   },
   {
     title: "Java Challenge",
-    text: "This Java program won't compile. There's a missing piece of punctuation.",
+    text: "Complete the Java program below to print 'Hello World'.",
     code: `public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello World")
+        System.out.println(___);
         int x = 5;
     }
 }`,
     language: "java",
-    answers: [
-      "missing semicolon",
-      "no semicolon",
-      "semicolon missing",
-      "need semicolon",
-      "forgot semicolon",
-      "syntax error",
-    ],
-    hint: "Every statement in Java needs to end with something...",
+    answers: ['"Hello World"', '"Hello World"'],
+    expectedOutput: `Hello World`,
+    hint: "What string should be printed? Don't forget the quotes and semicolon.",
   },
   {
     title: "C Challenge",
-    text: "This C program won't compile because it's missing something at the top.",
-    code: `int main() {
+    text: "Complete the C program by adding the necessary header file at the top.",
+    code: `___
+int main() {
     printf("Hello World\\n");
     return 0;
 }`,
     language: "c",
-    answers: [
-      "missing header file",
-      "no header file",
-      "header file missing",
-      "missing include",
-      "no include",
-      "missing stdio.h",
-      "need header",
-    ],
-    hint: "The printf function needs a specific header file to be included.",
+    answers: ["#include <stdio.h>", "#include<stdio.h>"],
+    expectedOutput: `Hello World`,
+    hint: "The printf function requires the stdio.h header file.",
   },
   {
     title: "Python Challenge",
-    text: "This code should print a greeting, but there's a typo. Find and fix it.",
+    text: "Complete the code to print a greeting message using the correct variable name.",
     code: `name = "Alice"
 age = 25
-print(f"Hello {naem}, you are {age} years old")`,
+print(f"Hello {___}, you are {age} years old")`,
     language: "python",
-    answers: [
-      "variable name typo",
-      "typo in variable name",
-      "misspelled variable",
-      "wrong variable name",
-      "spelling error",
-      "typo",
-      "name error",
-    ],
-    hint: "Look carefully at the variable name in the print statement.",
+    answers: ["name"],
+    expectedOutput: `Hello Alice, you are 25 years old`,
+    hint: "Use the variable that stores the person's name.",
   },
   {
     title: "Java Challenge",
-    text: "This code looks correct but won't compile due to a capitalization mistake.",
+    text: "Complete the code to print the result of 5 + 3 with correct capitalization.",
     code: `public class Calculator {
     public static void main(String[] args) {
-        system.out.println("Result: " + (5 + 3));
+        ___.out.println("Result: " + (5 + 3));
     }
 }`,
     language: "java",
-    answers: [
-      "incorrect capitalization",
-      "wrong capitalization",
-      "capitalization error",
-      "case sensitivity error",
-      "lowercase system",
-      "should be System",
-      "case error",
-    ],
-    hint: "Java is case-sensitive. Check the System.out.println statement carefully.",
+    answers: ["System"],
+    expectedOutput: `Result: 8`,
+    hint: "Java is case-sensitive. What class provides the out object?",
   },
   {
     title: "C Challenge",
-    text: "This code compiles but prints garbage values. What variable isn't properly set up?",
+    text: "Complete the code to initialize the variable x with a value before printing it.",
     code: `#include <stdio.h>
 int main() {
-    int x;
+    int x = ___;
     printf("The value is: %d\\n", x);
     return 0;
 }`,
     language: "c",
-    answers: [
-      "uninitialized variable",
-      "variable not initialized",
-      "no initial value",
-      "variable not set",
-      "missing initialization",
-      "undefined variable value",
-      "no value assigned",
-    ],
-    hint: "The variable 'x' is declared but never given a value before being used.",
+    answers: ["10", "0", "5", "1"],
+    expectedOutput: `The value is: 10`,
+    hint: "Assign any integer value to x. For example, use 10.",
   },
   {
     title: "Python Challenge",
-    text: "This code tries to access a list element but crashes. What's the issue?",
+    text: "Complete the code to access the last element in the fruits list correctly.",
     code: `fruits = ["apple", "banana", "orange"]
-print("My favorite fruit is:", fruits[3])`,
+print("My favorite fruit is:", fruits[___])`,
     language: "python",
-    answers: [
-      "index out of range",
-      "list index out of range",
-      "array index error",
-      "wrong index",
-      "index error",
-      "index too high",
-      "invalid index",
-    ],
-    hint: "Count how many items are in the list and check the index being accessed.",
+    answers: ["2", "-1"],
+    expectedOutput: `My favorite fruit is: orange`,
+    hint: "Python lists are 0-indexed. The last element is at index 2, or use -1 for the last item.",
   },
   {
     title: "Java Challenge",
-    text: "This program compiles but crashes when running. What's accessing something that doesn't exist?",
+    text: "Complete the code to access the last element in the numbers array correctly.",
     code: `public class ArrayTest {
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30, 40, 50};
-        System.out.println("Last number: " + numbers[5]);
+        System.out.println("Last number: " + numbers[___]);
     }
 }`,
     language: "java",
-    answers: [
-      "array index out of bounds",
-      "index out of bounds",
-      "array bounds error",
-      "wrong array index",
-      "index error",
-      "invalid array access",
-      "bounds exception",
-    ],
-    hint: "Arrays in Java start at index 0. How many elements are there vs. what index is being accessed?",
+    answers: ["4"],
+    expectedOutput: `Last number: 50`,
+    hint: "Java arrays are 0-indexed. With 5 elements, the last index is 4.",
   },
   {
     title: "C Challenge",
-    text: "This program compiles but doesn't print the expected decimal number. What's wrong with the data types?",
+    text: "Complete the code to correctly calculate and print the decimal result of 7 divided by 2.",
     code: `#include <stdio.h>
 int main() {
-    int result = 7 / 2;
+    float result = 7.0 / ___;
     printf("Result: %f\\n", result);
     return 0;
 }`,
     language: "c",
-    answers: [
-      "integer division and wrong format specifier",
-      "integer division",
-      "wrong data type",
-      "int instead of float",
-      "wrong format specifier",
-      "type mismatch",
-      "should use float",
-    ],
-    hint: "Check both the data type of 'result' and the format specifier used in printf.",
+    answers: ["2", "2.0"],
+    expectedOutput: `Result: 3.500000`,
+    hint: "Complete the division operation with the second number.",
   },
   {
     title: "Python Challenge",
-    text: "This code attempts to divide two numbers but raises an error. What's wrong?",
+    text: "Complete the code to add a check that prevents division by zero.",
     code: `def divide(a, b):
+    if b == ___:
+        return "Cannot divide by zero"
     result = a / b
     return result
 
-print(divide(10, 0))`,
+print(divide(10, 2))`,
     language: "python",
-    answers: [
-      "division by zero",
-      "divide by zero",
-      "zero division error",
-      "dividing by zero",
-      "cannot divide by zero",
-      "zero division",
-      "math error",
-    ],
-    hint: "Check what happens when the second argument is zero.",
+    answers: ["0"],
+    expectedOutput: `5.0`,
+    hint: "Check if b equals zero.",
   },
   {
     title: "Java Challenge",
-    text: "This program won't compile due to a missing keyword for variable declaration.",
+    text: "Complete the code to properly declare the count variable with its data type.",
     code: `public class Counter {
     public static void main(String[] args) {
-        count = 10;
+        ___ count = 10;
         System.out.println("Count: " + count);
     }
 }`,
     language: "java",
-    answers: [
-      "missing variable declaration",
-      "no variable declaration",
-      "variable not declared",
-      "missing data type",
-      "no type specified",
-      "undeclared variable",
-      "declaration missing",
-    ],
-    hint: "Variables in Java need a type declaration before use.",
+    answers: ["int"],
+    expectedOutput: `Count: 10`,
+    hint: "What data type should be used for whole numbers in Java?",
   },
   {
     title: "C Challenge",
-    text: "This program crashes when accessing a string. What's the issue with memory?",
+    text: "Complete the code to properly allocate memory for the string before using it.",
     code: `#include <stdio.h>
+#include <stdlib.h>
 int main() {
-    char *str;
+    char *str = (char*)malloc(___ * sizeof(char));
     str[0] = 'A';
+    str[1] = '\\0';
     printf("String: %s\\n", str);
+    free(str);
     return 0;
 }`,
     language: "c",
-    answers: [
-      "uninitialized pointer",
-      "pointer not initialized",
-      "null pointer",
-      "no memory allocated",
-      "pointer not set",
-      "undefined pointer",
-      "memory not allocated",
-    ],
-    hint: "Check if the string pointer is allocated memory before use.",
+    answers: ["10", "2", "5", "20"],
+    expectedOutput: `String: A`,
+    hint: "Allocate memory for at least 2 characters (one for 'A' and one for null terminator).",
   },
   {
     title: "Python Challenge",
-    text: "This code tries to concatenate strings but fails. Identify the issue.",
+    text: "Complete the code to convert the number to a string before concatenation.",
     code: `greeting = "Hello"
 name = 42
-message = greeting + name`,
+message = greeting + str(___)
+print(message)`,
     language: "python",
-    answers: [
-      "type mismatch",
-      "wrong data types",
-      "cannot concatenate int and string",
-      "type error",
-      "mixing types",
-      "incompatible types",
-      "string and number",
-    ],
-    hint: "Check the types of variables being concatenated.",
+    answers: ["name"],
+    expectedOutput: `Hello42`,
+    hint: "Convert the name variable to a string using str().",
   },
   {
     title: "Java Challenge",
-    text: "This code throws a null pointer exception. What's causing it?",
+    text: "Complete the code to initialize the text variable before using it.",
     code: `public class Test {
     public static void main(String[] args) {
-        String text = null;
+        String text = ___;
         System.out.println(text.length());
     }
 }`,
     language: "java",
-    answers: [
-      "null pointer exception",
-      "null pointer",
-      "calling method on null",
-      "text is null",
-      "null reference",
-      "null value error",
-      "accessing null object",
-    ],
-    hint: "Check if the variable is initialized before calling methods on it.",
+    answers: ['"Hello"', '"Hello"', '"test"', '"test"'],
+    expectedOutput: `5`,
+    hint: 'Initialize text with a string value, for example "Hello".',
   },
   {
     title: "C Challenge",
-    text: "This program doesn't return the expected value from a function. What's wrong?",
+    text: "Complete the code to return the sum of a and b from the function.",
     code: `#include <stdio.h>
 int add(int a, int b) {
-    a + b;
+    return ___;
 }
 int main() {
     printf("Sum: %d\\n", add(5, 3));
     return 0;
 }`,
     language: "c",
-    answers: [
-      "missing return statement",
-      "no return statement",
-      "function doesn't return",
-      "forgot return",
-      "return missing",
-      "no return value",
-      "function not returning",
-    ],
-    hint: "Check if the function is actually returning the computed value.",
+    answers: ["a + b"],
+    expectedOutput: `Sum: 8`,
+    hint: "Return the sum of the two parameters a and b.",
   },
 ];

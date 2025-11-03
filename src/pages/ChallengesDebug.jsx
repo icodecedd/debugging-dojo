@@ -5,20 +5,20 @@ import { FaHome } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
 import Squares from "@/blocks/Backgrounds/Squares/Squares";
 import FadeContent from "@/blocks/Animations/FadeContent/FadeContent";
-import { challenges } from "@/constants/questions.js";
+import { debugChallenges } from "@/constants/debugQuestions.js";
 import { toaster } from "@/components/ui/toaster";
 import { FaBullseye } from "react-icons/fa6";
 import { CodeBlockContainer } from "@/components/CodeBlockContainer";
-import { AnswerContainer } from "@/components/AnswerContainer";
+import { MultipleChoiceContainer } from "@/components/MultipleChoiceContainer";
 import { ResultDialog } from "@/components/ResultDialog";
 
-const Challenges = () => {
+const ChallengesDebug = () => {
   const [currentChallenge, setCurrentChallenge] = useState(
-    Math.floor(Math.random() * challenges.length)
+    Math.floor(Math.random() * debugChallenges.length)
   );
   const [visited, setVisited] = useState([]);
   const [progress, setProgress] = useState(1);
-  const [answer, setAnswer] = useState("");
+  const [selectedAnswer, setSelectedAnswer] = useState("");
   const [currentHintState, setCurrentHintState] = useState({
     showHint: false,
     isHintAlreadyShown: false,
@@ -37,36 +37,25 @@ const Challenges = () => {
           (attemptsInfo.correctAttempts / attemptsInfo.totalAttempts) * 100
         );
 
-  const handleAnswerChange = (event) => {
-    setAnswer(event.target.value);
+  const handleAnswerChange = (value) => {
+    setSelectedAnswer(value);
   };
 
   const MAX_LENGTH = 5;
 
   const handleSubmitAnswer = () => {
-    const userAnswer = answer.trim();
-    // Normalize answers: remove extra spaces, handle quotes
-    const normalizedUserAnswer = userAnswer
-      .replace(/\s+/g, " ")
-      .replace(/['"]/g, '"');
-    const validAnswers = challenges[currentChallenge].answers.map((ans) => {
-      const normalized = ans.trim().replace(/\s+/g, " ").replace(/['"]/g, '"');
-      return normalized.toLowerCase();
-    });
-    const isCorrect =
-      validAnswers.includes(normalizedUserAnswer.toLowerCase()) ||
-      validAnswers.some((ans) =>
-        normalizedUserAnswer.toLowerCase().includes(ans)
-      );
-
-    if (!userAnswer) {
+    if (selectedAnswer === "") {
       toaster.create({
-        title: "Please enter an answer",
+        title: "Please select an answer",
         type: "error",
         closable: true,
       });
       return;
     }
+
+    const userAnswerIndex = parseInt(selectedAnswer);
+    const isCorrect =
+      userAnswerIndex === debugChallenges[currentChallenge].correctAnswer;
 
     setAttemptsInfo((prev) => ({
       totalAttempts: prev.totalAttempts + 1,
@@ -88,13 +77,13 @@ const Challenges = () => {
 
       if (updatedVisited.length >= MAX_LENGTH) {
         setTimeout(() => {
-          toaster.dismiss(); // Dismiss all toasts
-          setIsDialogOpen(true); // Open dialog
+          toaster.dismiss();
+          setIsDialogOpen(true);
         }, 0);
         return updatedVisited;
       }
 
-      const remaining = challenges
+      const remaining = debugChallenges
         .map((_, i) => i)
         .filter((i) => !updatedVisited.includes(i));
 
@@ -106,7 +95,7 @@ const Challenges = () => {
       return updatedVisited;
     });
 
-    setAnswer("");
+    setSelectedAnswer("");
     setCurrentHintState({
       showHint: false,
       isHintAlreadyShown: false,
@@ -115,9 +104,9 @@ const Challenges = () => {
   };
 
   const handleResetChallenge = () => {
-    setCurrentChallenge(Math.floor(Math.random() * challenges.length));
+    setCurrentChallenge(Math.floor(Math.random() * debugChallenges.length));
     setVisited([]);
-    setAnswer("");
+    setSelectedAnswer("");
     setProgress(1);
     setCurrentHintState({
       showHint: false,
@@ -242,7 +231,7 @@ const Challenges = () => {
                 fontWeight="bold"
                 letterSpacing="tight"
               >
-                Mission {progress}: {challenges[currentChallenge].title}
+                Mission {progress}: {debugChallenges[currentChallenge].title}
               </Heading>
               <Text
                 fontSize={{ base: "xs", md: "sm" }}
@@ -251,7 +240,7 @@ const Challenges = () => {
                 mx="auto"
                 lineHeight="short"
               >
-                {challenges[currentChallenge].text}
+                {debugChallenges[currentChallenge].text}
               </Text>
             </Box>
             {/* Accuracy */}
@@ -287,51 +276,15 @@ const Challenges = () => {
             </Box>
           </Flex>
         </Box>
-        <CodeBlockContainer challenge={challenges[currentChallenge]} />
-        {challenges[currentChallenge].expectedOutput && (
-          <Box
-            p={{ base: 3, md: 4 }}
-            borderRadius="xl"
-            bg="rgba(30, 32, 40, 0.95)"
-            border="1px solid"
-            borderColor="green.500"
-            mb={4}
-            position="relative"
-            boxShadow="0 8px 32px rgba(72, 187, 120, 0.25)"
-            backdropFilter="blur(10px)"
-          >
-            <Heading
-              fontSize={{ base: "sm", md: "md" }}
-              mb={3}
-              color="green.300"
-              fontWeight="bold"
-            >
-              Expected Output:
-            </Heading>
-            <Box
-              p={{ base: 3, md: 4 }}
-              borderRadius="md"
-              bg="rgba(22, 24, 29, 0.8)"
-              border="1px solid"
-              borderColor="green.400"
-              fontFamily="mono"
-              fontSize={{ base: "sm", md: "md" }}
-              color="green.200"
-              whiteSpace="pre-wrap"
-              overflowX="auto"
-            >
-              {challenges[currentChallenge].expectedOutput}
-            </Box>
-          </Box>
-        )}
-        <AnswerContainer
-          answer={answer}
+        <CodeBlockContainer challenge={debugChallenges[currentChallenge]} />
+        <MultipleChoiceContainer
+          selectedAnswer={selectedAnswer}
           handleAnswerChange={handleAnswerChange}
           handleSubmitAnswer={handleSubmitAnswer}
           currentHintState={currentHintState}
           setCurrentHintState={setCurrentHintState}
           handleHint={handleHint}
-          challenge={challenges[currentChallenge]}
+          challenge={debugChallenges[currentChallenge]}
         />
         <ResultDialog
           isOpen={isDialogOpen}
@@ -344,4 +297,4 @@ const Challenges = () => {
   );
 };
 
-export default Challenges;
+export default ChallengesDebug;

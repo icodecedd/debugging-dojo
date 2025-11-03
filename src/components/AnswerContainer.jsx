@@ -22,36 +22,47 @@ export const AnswerContainer = ({
 }) => {
   return (
     <Box
-      p={{ base: 4, md: 6 }}
-      borderRadius="2xl"
-      bg="gray.800"
-      border="1px"
-      borderColor="purple.600"
-      mb={6}
+      p={{ base: 3, md: 4 }}
+      borderRadius="xl"
+      bg="rgba(30, 32, 40, 0.95)"
+      border="1px solid"
+      borderColor="purple.500"
+      mb={0}
       position="relative"
-      boxShadow="lg"
+      boxShadow="0 8px 32px rgba(128, 90, 213, 0.25)"
+      backdropFilter="blur(10px)"
     >
-      <Heading fontSize="xl" mb={6} color="white">
-        What's the answer?
+      <Heading
+        fontSize={{ base: "md", md: "lg" }}
+        mb={4}
+        color="purple.300"
+        fontWeight="bold"
+      >
+        Complete the code:
       </Heading>
       {currentHintState.showHint && (
         <Alert.Root
           variant="subtle"
-          borderRadius="lg"
-          bg="#38362e"
+          borderRadius="md"
+          bg="rgba(236, 201, 75, 0.15)"
+          border="1px solid"
+          borderColor="yellow.400"
           color="#ecce52"
-          mb={4}
+          mb={3}
         >
           <Alert.Indicator>
             <FaLightbulb />
           </Alert.Indicator>
-          <Alert.Title>{challenge.hint}</Alert.Title>
+          <Alert.Title fontSize={{ base: "xs", md: "sm" }}>
+            {challenge.hint}
+          </Alert.Title>
           <CloseButton
-            size="2xs"
+            size="xs"
             pos="absolute"
             top={2}
             right={2}
-            _hover={{ bg: "transparent" }}
+            color="yellow.400"
+            _hover={{ bg: "transparent", color: "yellow.300" }}
             onClick={() =>
               setCurrentHintState((prev) => ({ ...prev, showHint: false }))
             }
@@ -69,38 +80,53 @@ export const AnswerContainer = ({
         <Textarea
           id="answer"
           name="answer"
-          placeholder="Describe the bug you found..."
-          size="lg"
+          placeholder="Enter the missing code to fill the blank (___)..."
+          size={{ base: "sm", md: "md" }}
           resize="none"
-          h="120px"
-          borderRadius="lg"
-          bg="gray.700"
+          h={{ base: "80px", md: "100px" }}
+          borderRadius="md"
+          bg="rgba(45, 47, 55, 0.8)"
           color="white"
           mb={2}
           value={answer}
           onChange={handleAnswerChange}
-          _placeholder={{ color: "gray.400", fontSize: "lg" }}
-          _focus={{ borderColor: "purple.500" }}
+          borderColor="purple.500"
+          fontFamily="mono"
+          _placeholder={{
+            color: "gray.400",
+            fontSize: { base: "sm", md: "md" },
+          }}
+          _focus={{
+            borderColor: "purple.400",
+            boxShadow: "0 0 0 1px rgba(128, 90, 213, 0.5)",
+          }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
+            if (e.key === "Enter" && e.ctrlKey) {
               e.preventDefault();
               handleSubmitAnswer();
             }
           }}
         />
-        <Flex justifyContent="space-between" alignItems="center" mt={2} gap={4}>
+        <Flex justifyContent="space-between" alignItems="center" mt={2} gap={3}>
           <Button
             flex="1"
-            bg="purple.600"
+            bg="purple.500"
             color="white"
-            size="lg"
+            size={{ base: "sm", md: "md" }}
             type="submit"
-            borderRadius="lg"
+            borderRadius="md"
+            fontWeight="semibold"
             _hover={{
-              bg: "purple.500",
+              bg: "purple.400",
+              transform: "translateY(-1px)",
             }}
+            _active={{ transform: "translateY(0)" }}
+            transition="all 0.2s"
           >
-            <GoCheck /> <Text mt={1}>Submit</Text>
+            <GoCheck />{" "}
+            <Text mt={0.5} fontSize={{ base: "xs", md: "sm" }}>
+              Submit
+            </Text>
           </Button>
           <Button
             disabled={
@@ -109,17 +135,22 @@ export const AnswerContainer = ({
             }
             variant="ghost"
             onClick={handleHint}
-            colorScheme="purple"
-            borderRadius="lg"
-            size="sm"
-            color="gray.400"
+            borderRadius="md"
+            size={{ base: "xs", md: "sm" }}
+            color="purple.300"
             _hover={{
-              bg: "purple.600",
+              bg: "purple.500",
               color: "white",
+            }}
+            _disabled={{
+              opacity: 0.4,
+              cursor: "not-allowed",
             }}
           >
             <FaLightbulb />{" "}
-            <Text mt={1.5}>Hint: {currentHintState.numberOfHintsLeft}</Text>
+            <Text mt={0.5} fontSize={{ base: "xs", md: "sm" }}>
+              Hint: {currentHintState.numberOfHintsLeft}
+            </Text>
           </Button>
         </Flex>
       </form>

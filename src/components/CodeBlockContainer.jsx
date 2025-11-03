@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import { CodeBlock, createShikiAdapter } from "@chakra-ui/react";
 
 const shikiAdapter = createShikiAdapter({
@@ -16,46 +16,51 @@ const shikiAdapter = createShikiAdapter({
 });
 
 export const CodeBlockContainer = ({ challenge }) => {
+  const codeBlockSize = useBreakpointValue({ base: "sm", md: "md" });
+
   return (
     <CodeBlock.AdapterProvider value={shikiAdapter} aria-label="Code block">
       <CodeBlock.Root
         code={challenge.code}
         language={challenge.language}
-        size="xl"
+        size={codeBlockSize}
         meta={{ wordWrap: true }}
-        p={6}
-        mb={6}
+        p={{ base: 3, md: 4 }}
+        mb={4}
         position="relative"
-        borderRadius="2xl"
-        bg="#16181d"
-        boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
+        borderRadius="xl"
+        bg="rgba(22, 24, 29, 0.95)"
+        border="1px solid"
+        borderColor="purple.500"
+        boxShadow="0 8px 32px rgba(128, 90, 213, 0.25)"
+        backdropFilter="blur(10px)"
         aria-label="Code block"
       >
         <Flex>
           <Box
             position="absolute"
-            top="16px"
-            left="24px"
+            top={{ base: "12px", md: "14px" }}
+            left={{ base: "16px", md: "20px" }}
             display="flex"
-            gap="8px"
+            gap={{ base: "6px", md: "8px" }}
           >
             <Box
-              w="12px"
-              h="12px"
+              w={{ base: "10px", md: "12px" }}
+              h={{ base: "10px", md: "12px" }}
               borderRadius="full"
               bg="red.400"
               _hover={{ bg: "red.500" }}
             />
             <Box
-              w="12px"
-              h="12px"
+              w={{ base: "10px", md: "12px" }}
+              h={{ base: "10px", md: "12px" }}
               borderRadius="full"
               bg="yellow.400"
               _hover={{ bg: "yellow.500" }}
             />
             <Box
-              w="12px"
-              h="12px"
+              w={{ base: "10px", md: "12px" }}
+              h={{ base: "10px", md: "12px" }}
               borderRadius="full"
               bg="green.400"
               _hover={{ bg: "green.500" }}
@@ -63,16 +68,16 @@ export const CodeBlockContainer = ({ challenge }) => {
           </Box>
           <Text
             position="absolute"
-            top="16px"
-            right="24px"
+            top={{ base: "12px", md: "14px" }}
+            right={{ base: "16px", md: "20px" }}
             fontSize={{ base: "xs", md: "sm" }}
-            color="gray.300"
+            color="purple.300"
             fontWeight="medium"
           >
             {`${challenge.title}.${challenge.language}`}
           </Text>
         </Flex>
-        <CodeBlock.Content mt={6}>
+        <CodeBlock.Content mt={{ base: 5, md: 6 }}>
           <CodeBlock.Code>
             <CodeBlock.CodeText />
           </CodeBlock.Code>
