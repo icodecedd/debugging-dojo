@@ -1,209 +1,389 @@
 export const challenges = [
+  // --- Hello World Section (10 questions) ---
   {
-    title: "Python Challenge",
-    text: "Complete the code below to calculate the sum of numbers in a list.",
-    code: `def calculate_sum(numbers):
-    total = 0
-    for num in numbers:
-        total += ___
-    return total
-
-print(calculate_sum([1, 2, 3, 4]))`,
+    title: "Python Hello World",
+    text: "Complete the code to print 'Hello, World!'.",
+    code: `print(___)`,
     language: "python",
-    answers: ["num"],
-    expectedOutput: `6`,
-    hint: "What variable are you iterating over in the for loop?",
+    answers: [`"Hello, World!"`, `'Hello, World!'`],
+    expectedOutput: `Hello, World!`,
+    hint: "Use double or single quotes to create the string.",
   },
   {
-    title: "Java Challenge",
-    text: "Complete the Java program below to print 'Hello World'.",
-    code: `public class Hello {
+    title: "Java Hello World",
+    text: "Complete the code to print 'Hello, Java!'.",
+    code: `public class Main {
     public static void main(String[] args) {
         System.out.println(___);
-        int x = 5;
     }
 }`,
     language: "java",
-    answers: ['"Hello World"', '"Hello World"'],
-    expectedOutput: `Hello World`,
-    hint: "What string should be printed? Don't forget the quotes and semicolon.",
+    answers: [`"Hello, Java!"`],
+    expectedOutput: `Hello, Java!`,
+    hint: "In Java, strings are enclosed in double quotes.",
   },
   {
-    title: "C Challenge",
-    text: "Complete the C program by adding the necessary header file at the top.",
-    code: `___
-int main() {
-    printf("Hello World\\n");
-    return 0;
-}`,
-    language: "c",
-    answers: ["#include <stdio.h>", "#include<stdio.h>"],
-    expectedOutput: `Hello World`,
-    hint: "The printf function requires the stdio.h header file.",
-  },
-  {
-    title: "Python Challenge",
-    text: "Complete the code to print a greeting message using the correct variable name.",
-    code: `name = "Alice"
-age = 25
-print(f"Hello {___}, you are {age} years old")`,
-    language: "python",
-    answers: ["name"],
-    expectedOutput: `Hello Alice, you are 25 years old`,
-    hint: "Use the variable that stores the person's name.",
-  },
-  {
-    title: "Java Challenge",
-    text: "Complete the code to print the result of 5 + 3 with correct capitalization.",
-    code: `public class Calculator {
-    public static void main(String[] args) {
-        ___.out.println("Result: " + (5 + 3));
-    }
-}`,
-    language: "java",
-    answers: ["System"],
-    expectedOutput: `Result: 8`,
-    hint: "Java is case-sensitive. What class provides the out object?",
-  },
-  {
-    title: "C Challenge",
-    text: "Complete the code to initialize the variable x with a value before printing it.",
+    title: "C Hello World",
+    text: "Complete the code to print 'Hello, C!'.",
     code: `#include <stdio.h>
 int main() {
-    int x = ___;
-    printf("The value is: %d\\n", x);
+    printf(___);
     return 0;
 }`,
     language: "c",
-    answers: ["10", "0", "5", "1"],
-    expectedOutput: `The value is: 10`,
-    hint: "Assign any integer value to x. For example, use 10.",
+    answers: [`"Hello, C!\n"`],
+    expectedOutput: `Hello, C!`,
+    hint: "The printf function takes a string literal. Don't forget the newline character `\n`.",
   },
   {
-    title: "Python Challenge",
-    text: "Complete the code to access the last element in the fruits list correctly.",
-    code: `fruits = ["apple", "banana", "orange"]
-print("My favorite fruit is:", fruits[___])`,
+    title: "JavaScript Hello World",
+    text: "Complete the code to print 'Hello, JavaScript!'.",
+    code: `console.log(___);`,
+    language: "javascript",
+    answers: [`"Hello, JavaScript!"`, `'Hello, JavaScript!'`],
+    expectedOutput: `Hello, JavaScript!`,
+    hint: "Use the `console.log` function to print to the console.",
+  },
+  {
+    title: "Python Print a Number",
+    text: "Complete the code to print the number 5.",
+    code: `print(___)`,
     language: "python",
-    answers: ["2", "-1"],
-    expectedOutput: `My favorite fruit is: orange`,
-    hint: "Python lists are 0-indexed. The last element is at index 2, or use -1 for the last item.",
+    answers: ["5"],
+    expectedOutput: `5`,
+    hint: "Just the number is needed inside the print function.",
   },
   {
-    title: "Java Challenge",
-    text: "Complete the code to access the last element in the numbers array correctly.",
-    code: `public class ArrayTest {
+    title: "Java Print a Number",
+    text: "Complete the code to print the number 10.",
+    code: `public class Main {
     public static void main(String[] args) {
-        int[] numbers = {10, 20, 30, 40, 50};
-        System.out.println("Last number: " + numbers[___]);
+        System.out.println(___);
     }
 }`,
     language: "java",
-    answers: ["4"],
-    expectedOutput: `Last number: 50`,
-    hint: "Java arrays are 0-indexed. With 5 elements, the last index is 4.",
+    answers: ["10"],
+    expectedOutput: `10`,
+    hint: "Directly place the number inside the parentheses.",
   },
   {
-    title: "C Challenge",
-    text: "Complete the code to correctly calculate and print the decimal result of 7 divided by 2.",
+    title: "C Print a Number",
+    text: "Complete the code to print the integer 42.",
     code: `#include <stdio.h>
 int main() {
-    float result = 7.0 / ___;
-    printf("Result: %f\\n", result);
+    printf("%d\n", ___);
     return 0;
 }`,
     language: "c",
-    answers: ["2", "2.0"],
-    expectedOutput: `Result: 3.500000`,
-    hint: "Complete the division operation with the second number.",
+    answers: ["42"],
+    expectedOutput: `42`,
+    hint: "The value to be printed goes after the format string.",
   },
   {
-    title: "Python Challenge",
-    text: "Complete the code to add a check that prevents division by zero.",
-    code: `def divide(a, b):
-    if b == ___:
-        return "Cannot divide by zero"
-    result = a / b
-    return result
+    title: "JavaScript Print a Variable",
+    text: "Complete the code to print the value of the variable 'message'.",
+    code: `let message = "Success!";
+console.log(___);`,
+    language: "javascript",
+    answers: ["message"],
+    expectedOutput: `Success!`,
+    hint: "Use the variable name to access its value.",
+  },
+  {
+    title: "Python Print a Variable",
+    text: "Complete the code to print the value of 'x'.",
+    code: `x = 100
+print(___)`,
+    language: "python",
+    answers: ["x"],
+    expectedOutput: `100`,
+    hint: "Simply use the variable's name inside the print function.",
+  },
+  {
+    title: "C++ Hello World",
+    text: "Complete the code to print 'Hello, C++!'.",
+    code: `#include <iostream>
+int main() {
+    std::cout << ___ << std::endl;
+    return 0;
+}`,
+    language: "cpp",
+    answers: [`"Hello, C++!"`],
+    expectedOutput: `Hello, C++!`,
+    hint: "Use double quotes for the string, and stream it to `std::cout`.",
+  },
 
-print(divide(10, 2))`,
+  // --- Basic Operations & Variables (15 questions) ---
+  {
+    title: "Python Variable Assignment",
+    text: "Assign the value 15 to the variable 'a'.",
+    code: `a = ___
+print(a)`,
     language: "python",
-    answers: ["0"],
-    expectedOutput: `5.0`,
-    hint: "Check if b equals zero.",
+    answers: ["15"],
+    expectedOutput: `15`,
+    hint: "Use the assignment operator `=`.",
   },
   {
-    title: "Java Challenge",
-    text: "Complete the code to properly declare the count variable with its data type.",
-    code: `public class Counter {
+    title: "Java Variable Declaration",
+    text: "Declare an integer variable 'score' and assign it the value 85.",
+    code: `public class Main {
     public static void main(String[] args) {
-        ___ count = 10;
-        System.out.println("Count: " + count);
+        ___ score = 85;
+        System.out.println(score);
     }
 }`,
     language: "java",
     answers: ["int"],
-    expectedOutput: `Count: 10`,
-    hint: "What data type should be used for whole numbers in Java?",
+    expectedOutput: `85`,
+    hint: "In Java, you must specify the type of the variable (e.g., int, String).",
   },
   {
-    title: "C Challenge",
-    text: "Complete the code to properly allocate memory for the string before using it.",
+    title: "JavaScript Simple Addition",
+    text: "Complete the code to print the sum of 5 and 10.",
+    code: `let a = 5;
+let b = 10;
+console.log(___);`,
+    language: "javascript",
+    answers: ["a + b"],
+    expectedOutput: `15`,
+    hint: "Use the `+` operator to add the two variables.",
+  },
+  {
+    title: "Python String Concatenation",
+    text: "Combine the two strings to form 'Hello World'.",
+    code: `s1 = "Hello"
+s2 = "World"
+print(s1 + " " + ___)`,
+    language: "python",
+    answers: ["s2"],
+    expectedOutput: `Hello World`,
+    hint: "Concatenate the second variable `s2` to the expression.",
+  },
+  {
+    title: "C Simple Calculation",
+    text: "Complete the code to calculate the product of x and y.",
     code: `#include <stdio.h>
-#include <stdlib.h>
 int main() {
-    char *str = (char*)malloc(___ * sizeof(char));
-    str[0] = 'A';
-    str[1] = '\\0';
-    printf("String: %s\\n", str);
-    free(str);
+    int x = 5;
+    int y = 4;
+    printf("%d\n", ___);
     return 0;
 }`,
     language: "c",
-    answers: ["10", "2", "5", "20"],
-    expectedOutput: `String: A`,
-    hint: "Allocate memory for at least 2 characters (one for 'A' and one for null terminator).",
+    answers: ["x * y"],
+    expectedOutput: `20`,
+    hint: "The multiplication operator in C is `*`.",
   },
   {
-    title: "Python Challenge",
-    text: "Complete the code to convert the number to a string before concatenation.",
-    code: `greeting = "Hello"
-name = 42
-message = greeting + str(___)
-print(message)`,
-    language: "python",
-    answers: ["name"],
-    expectedOutput: `Hello42`,
-    hint: "Convert the name variable to a string using str().",
-  },
-  {
-    title: "Java Challenge",
-    text: "Complete the code to initialize the text variable before using it.",
-    code: `public class Test {
+    title: "Java String Concatenation",
+    text: "Complete the code to print 'Your score is: 100'.",
+    code: `public class Main {
     public static void main(String[] args) {
-        String text = ___;
-        System.out.println(text.length());
+        int score = 100;
+        System.out.println("Your score is: " + ___);
     }
 }`,
     language: "java",
-    answers: ['"Hello"', '"Hello"', '"test"', '"test"'],
-    expectedOutput: `5`,
-    hint: 'Initialize text with a string value, for example "Hello".',
+    answers: ["score"],
+    expectedOutput: `Your score is: 100`,
+    hint: "You can concatenate strings and integers directly in a print statement.",
   },
   {
-    title: "C Challenge",
-    text: "Complete the code to return the sum of a and b from the function.",
+    title: "Python List Access",
+    text: "Complete the code to print the first element of the list.",
+    code: `my_list = ["apple", "banana", "cherry"]
+print(my_list[___])`,
+    language: "python",
+    answers: ["0"],
+    expectedOutput: `apple`,
+    hint: "List indexing starts at 0.",
+  },
+  {
+    title: "JavaScript Array Access",
+    text: "Complete the code to print the last element of the array.",
+    code: `const colors = ["red", "green", "blue"];
+console.log(colors[___]);`,
+    language: "javascript",
+    answers: ["2"],
+    expectedOutput: `blue`,
+    hint: "The indices for this array are 0, 1, and 2.",
+  },
+  {
+    title: "C Array Access",
+    text: "Complete the code to print the second element of the array.",
     code: `#include <stdio.h>
-int add(int a, int b) {
-    return ___;
-}
 int main() {
-    printf("Sum: %d\\n", add(5, 3));
+    int grades[] = {90, 85, 95};
+    printf("%d\n", grades[___]);
     return 0;
 }`,
     language: "c",
-    answers: ["a + b"],
-    expectedOutput: `Sum: 8`,
-    hint: "Return the sum of the two parameters a and b.",
+    answers: ["1"],
+    expectedOutput: `85`,
+    hint: "The second element is at index 1.",
+  },
+  {
+    title: "Python Function Call",
+    text: "Complete the code to call the 'greet' function.",
+    code: `def greet():
+    print("Hello from a function!")
+
+___`,
+    language: "python",
+    answers: ["greet()"],
+    expectedOutput: `Hello from a function!`,
+    hint: "To call a function, use its name followed by parentheses.",
+  },
+  {
+    title: "Java Method Call",
+    text: "Complete the code to call the 'printMessage' method.",
+    code: `public class Main {
+    public static void printMessage() {
+        System.out.println("Method called!");
+    }
+    public static void main(String[] args) {
+        ___;
+    }
+}`,
+    language: "java",
+    answers: ["printMessage()"],
+    expectedOutput: `Method called!`,
+    hint: "Call the method by its name followed by parentheses and a semicolon.",
+  },
+  {
+    title: "JavaScript Function with Parameter",
+    text: "Complete the function call to print 'Hello, Bob'.",
+    code: `function greet(name) {
+    console.log("Hello, " + name);
+}
+greet(___);`,
+    language: "javascript",
+    answers: [`"Bob"`, `'Bob'`],
+    expectedOutput: `Hello, Bob`,
+    hint: "Pass the string 'Bob' as an argument to the function.",
+  },
+  {
+    title: "Python Simple Loop",
+    text: "Complete the for loop to print numbers 0, 1, and 2.",
+    code: `for i in range(___):
+    print(i)`,
+    language: "python",
+    answers: ["3"],
+    expectedOutput: `0
+1
+2`,
+    hint: "`range(3)` generates numbers from 0 up to (but not including) 3.",
+  },
+  {
+    title: "C Simple If-Statement",
+    text: "Complete the if-statement to check if 'a' is greater than 'b'.",
+    code: `#include <stdio.h>
+int main() {
+    int a = 10;
+    int b = 5;
+    if (___) {
+        printf("a is greater\n");
+    }
+    return 0;
+}`,
+    language: "c",
+    answers: ["a > b"],
+    expectedOutput: `a is greater`,
+    hint: "The 'greater than' operator is `>`.",
+  },
+  {
+    title: "Java Simple Boolean",
+    text: "Complete the code to print the value of the boolean variable.",
+    code: `public class Main {
+    public static void main(String[] args) {
+        boolean isJavaFun = true;
+        System.out.println(___);
+    }
+}`,
+    language: "java",
+    answers: ["isJavaFun"],
+    expectedOutput: `true`,
+    hint: "Print the variable that holds the boolean value.",
+  },
+
+  // --- Slightly More Complex (5 questions) ---
+  {
+    title: "Python Sum of List",
+    text: "Complete the code to add the current number to the total.",
+    code: `def calculate_sum(numbers):
+    total = 0
+    for num in numbers:
+        total = total + ___
+    return total
+
+print(calculate_sum([10, 20, 30]))`,
+    language: "python",
+    answers: ["num"],
+    expectedOutput: `60`,
+    hint: "Inside the loop, the current number is stored in the 'num' variable.",
+  },
+  {
+    title: "JavaScript Find Max Number",
+    text: "Complete the code to check if the current number is greater than max.",
+    code: `function findMax(arr) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > ___) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+console.log(findMax([1, 5, 2, 8, 3]));`,
+    language: "javascript",
+    answers: ["max"],
+    expectedOutput: `8`,
+    hint: "You need to compare the current element `arr[i]` with the current maximum value stored in `max`.",
+  },
+  {
+    title: "C String Length",
+    text: "Include the necessary header to use the strlen function.",
+    code: `#include <stdio.h>
+#include <___>
+
+int main() {
+    char myString[] = "Hello";
+    printf("Length: %d\n", strlen(myString));
+    return 0;
+}`,
+    language: "c",
+    answers: ["string.h"],
+    expectedOutput: `Length: 5`,
+    hint: "Functions for string manipulation in C are in the `string.h` header.",
+  },
+  {
+    title: "Java For Loop",
+    text: "Complete the for loop to iterate 5 times (from 0 to 4).",
+    code: `public class Main {
+    public static void main(String[] args) {
+        for (int i = 0; ___; i++) {
+            System.out.println(i);
+        }
+    }
+}`,
+    language: "java",
+    answers: ["i < 5"],
+    expectedOutput: `0
+1
+2
+3
+4`,
+    hint: "The loop should continue as long as 'i' is less than 5.",
+  },
+  {
+    title: "Python Dictionary Value",
+    text: "Complete the code to access the value associated with the key 'city'.",
+    code: `person = {"name": "John", "city": "New York"}
+print(person[___])`,
+    language: "python",
+    answers: [`"city"`, `'city'`],
+    expectedOutput: `New York`,
+    hint: "Use the key as a string to get the corresponding value from the dictionary.",
   },
 ];

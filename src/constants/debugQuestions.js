@@ -1,275 +1,551 @@
 export const debugChallenges = [
+  // --- Syntax & Typos (10 questions) ---
   {
-    title: "Python Debug Challenge",
-    text: "What's wrong with this code? The function should calculate the sum but it doesn't work correctly.",
-    code: `def calculate_sum(numbers):
-total = 0
-for num in numbers:
-  total += num
-return total`,
+    title: "Python Missing Colon",
+    text: "This Python code won't run because of a syntax error. What's missing?",
+    code: `def my_function()
+    print("Hello from a function")`,
     language: "python",
     correctAnswer: 0,
     options: [
-      "Indentation error - 'total = 0' and 'return total' need proper indentation",
-      "Missing semicolon at the end of return statement",
-      "The variable 'num' should be 'number' instead",
-      "The function needs a print statement to display the result",
+      "Missing a colon ':' after the function definition",
+      "The print statement is not indented correctly",
+      "The function needs to have a parameter",
+      "Missing semicolon at the end of the print statement",
     ],
-    hint: "Check the alignment of each line inside the function.",
+    hint: "In Python, blocks like functions and loops are started with a colon.",
   },
   {
-    title: "Java Debug Challenge",
-    text: "This Java program won't compile. What's the issue?",
-    code: `public class Hello {
+    title: "Java Missing Semicolon",
+    text: "This Java program has a compile error. What is it?",
+    code: `public class Greeter {
     public static void main(String[] args) {
-        System.out.println("Hello World")
-        int x = 5;
+        System.out.println("Hello, World!")
     }
 }`,
     language: "java",
-    correctAnswer: 0,
+    correctAnswer: 1,
     options: [
-      "Missing semicolon after System.out.println statement",
-      "String should use single quotes instead of double quotes",
-      "The class name should be lowercase 'hello'",
-      "Missing return statement in main method",
+      "The class name should be lowercase",
+      "Missing semicolon ';' at the end of the println statement",
+      "The main method should not be static",
+      "String literals must use single quotes",
     ],
-    hint: "Every statement in Java needs to end with something...",
+    hint: "Almost every statement in Java must end with a specific character.",
   },
   {
-    title: "C Debug Challenge",
-    text: "This C program won't compile. What's missing?",
+    title: "C Missing Header",
+    text: "This C code fails to compile because a function is not declared. What's the fix?",
     code: `int main() {
-    printf("Hello World\\n");
+    printf("Using a function without its header.\n");
     return 0;
 }`,
     language: "c",
-    correctAnswer: 0,
+    correctAnswer: 2,
     options: [
-      "Missing header file '#include <stdio.h>' at the top",
-      "Missing semicolon after return statement",
-      "The main function should return void instead of int",
-      "The printf statement needs parentheses removed",
+      "The main function must return void",
+      "The string needs single quotes",
+      "Missing '#include <stdio.h>' at the beginning of the file",
+      "A semicolon is missing after `return 0`",
     ],
-    hint: "The printf function needs a specific header file to be included.",
+    hint: "The `printf` function is part of the standard input/output library.",
   },
   {
-    title: "Python Debug Challenge",
-    text: "This code has a typo that will cause an error. What is it?",
+    title: "JavaScript Variable Typo",
+    text: "This code produces a ReferenceError. Why?",
+    code: `let greeting = "Hello";
+console.log(greting);`,
+    language: "javascript",
+    correctAnswer: 0,
+    options: [
+      "Typo in the variable name: 'greting' should be 'greeting'",
+      "console.log cannot print variables",
+      "Missing semicolon after the first line",
+      "The variable should have been declared with `var`",
+    ],
+    hint: "Check the spelling of the variable in the `console.log` call.",
+  },
+  {
+    title: "Python Indentation Error",
+    text: "This code will fail with an IndentationError. What's wrong?",
     code: `name = "Alice"
-age = 25
-print(f"Hello {naem}, you are {age} years old")`,
+if name == "Alice":
+print("Welcome, Alice!")`,
     language: "python",
-    correctAnswer: 0,
+    correctAnswer: 3,
     options: [
-      "Variable name typo - 'naem' should be 'name'",
-      "Missing comma between variables in print statement",
-      "The age variable should be a string, not a number",
-      "The f-string syntax is incorrect",
+      "The variable `name` is not defined",
+      "The `if` statement needs a colon",
+      "String comparison should use `is` instead of `==`",
+      "The `print` statement is not indented correctly",
     ],
-    hint: "Look carefully at the variable name in the print statement.",
+    hint: "In Python, code inside an `if` block must be indented.",
   },
   {
-    title: "Java Debug Challenge",
-    text: "This code won't compile due to a case sensitivity error. What's wrong?",
-    code: `public class Calculator {
+    title: "Java Case Sensitivity",
+    text: "This Java code won't compile due to a case-sensitivity issue. What is it?",
+    code: `public class Main {
     public static void main(String[] args) {
-        system.out.println("Result: " + (5 + 3));
+        string message = "hello";
+        System.out.println(message);
     }
 }`,
     language: "java",
-    correctAnswer: 0,
+    correctAnswer: 1,
     options: [
-      "'system' should be 'System' with capital S",
-      "Missing semicolon after the println statement",
-      "The println method should be 'printLine' instead",
-      "String concatenation syntax is incorrect",
+      "The `main` method should be capitalized",
+      "The type `string` should be `String` with a capital 'S'",
+      "The variable `message` should be `Message`",
+      "System.out.println should be `system.out.println`",
     ],
-    hint: "Java is case-sensitive. Check the System.out.println statement carefully.",
+    hint: "Java's built-in types, like String, are case-sensitive.",
   },
   {
-    title: "C Debug Challenge",
-    text: "This code compiles but prints garbage values. What's the problem?",
+    title: "C Mismatched Parentheses",
+    text: "This C code has a syntax error. Can you spot it?",
     code: `#include <stdio.h>
 int main() {
-    int x;
-    printf("The value is: %d\\n", x);
+    printf("Hello, World!\n";
     return 0;
 }`,
     language: "c",
     correctAnswer: 0,
     options: [
-      "Variable 'x' is uninitialized before being used",
-      "The printf format specifier should be %f instead of %d",
-      "Missing header file for printf function",
-      "Variable 'x' should be declared as 'float' not 'int'",
+      "Missing closing parenthesis ')' in the printf call",
+      "The main function should be `void main()`",
+      "The include statement is incorrect",
+      "The return value should be 1, not 0",
     ],
-    hint: "The variable 'x' is declared but never given a value before being used.",
+    hint: "Count the opening and closing parentheses.",
   },
   {
-    title: "Python Debug Challenge",
-    text: "This code will crash with an IndexError. What's the issue?",
-    code: `fruits = ["apple", "banana", "orange"]
-print("My favorite fruit is:", fruits[3])`,
-    language: "python",
-    correctAnswer: 0,
+    title: "JavaScript Missing Quotes",
+    text: "This code will throw a syntax error. What's the problem?",
+    code: `let name = Bob;
+console.log("Hello, " + name);`,
+    language: "javascript",
+    correctAnswer: 2,
     options: [
-      "Index out of range - list has 3 elements (indices 0-2), but accessing index 3",
-      "List should use parentheses instead of square brackets",
-      "The print statement needs f-string formatting",
-      "List indexing should start from 1, not 0",
+      "The `let` keyword is incorrect",
+      "The `+` operator cannot be used with strings",
+      "The string literal 'Bob' is missing quotes around it",
+      "console.log is misspelled",
     ],
-    hint: "Count how many items are in the list and check the index being accessed.",
+    hint: "When you want to create a string of text, you need to enclose it in quotes.",
   },
   {
-    title: "Java Debug Challenge",
-    text: "This program will throw an ArrayIndexOutOfBoundsException. Why?",
-    code: `public class ArrayTest {
-    public static void main(String[] args) {
-        int[] numbers = {10, 20, 30, 40, 50};
-        System.out.println("Last number: " + numbers[5]);
-    }
-}`,
-    language: "java",
-    correctAnswer: 0,
-    options: [
-      "Array index out of bounds - array has 5 elements (indices 0-4), but accessing index 5",
-      "Array should be declared with size parameter",
-      "The array initialization syntax is incorrect",
-      "System.out.println needs import statement",
-    ],
-    hint: "Arrays in Java start at index 0. How many elements are there vs. what index is being accessed?",
-  },
-  {
-    title: "C Debug Challenge",
-    text: "This program doesn't print the expected decimal number. What's wrong?",
-    code: `#include <stdio.h>
-int main() {
-    int result = 7 / 2;
-    printf("Result: %f\\n", result);
-    return 0;
-}`,
-    language: "c",
-    correctAnswer: 0,
-    options: [
-      "Integer division issue and wrong format specifier - should use float type and %f, or %d for int",
-      "Missing cast to float in division",
-      "The printf statement needs double quotes",
-      "Division operation is incorrect - should be 7.0 / 2.0",
-    ],
-    hint: "Check both the data type of 'result' and the format specifier used in printf.",
-  },
-  {
-    title: "Python Debug Challenge",
-    text: "This code will raise a ZeroDivisionError. What's the problem?",
-    code: `def divide(a, b):
-    result = a / b
-    return result
+    title: "Python Function Call Parentheses",
+    text: "This code doesn't print anything. Why not?",
+    code: `def say_hello():
+    return "hello"
 
-print(divide(10, 0))`,
+say_hello`,
+    language: "python",
+    correctAnswer: 3,
+    options: [
+      "The function needs a `print` statement inside it",
+      "The function is missing a parameter",
+      "The function name is invalid",
+      "The function is not being called correctly; it needs parentheses `()`",
+    ],
+    hint: "Just writing a function's name refers to the function itself, it doesn't execute it.",
+  },
+  {
+    title: "C++ Missing Semicolon",
+    text: "This C++ code won't compile. What is missing?",
+    code: `#include <iostream>
+int main() {
+    std::cout << "Hello, C++!" << std::endl
+    return 0;
+}`,
+    language: "cpp",
+    correctAnswer: 1,
+    options: [
+      "The `main` function should return 1",
+      "A semicolon ';' is missing after the `std::endl`",
+      "The iostream header is not needed",
+      "You should use `printf` instead of `std::cout`",
+    ],
+    hint: "In C++, most statements need to be terminated with a semicolon.",
+  },
+
+  // --- Logic & Runtime Errors (15 questions) ---
+  {
+    title: "Python Index Out of Range",
+    text: "This code will raise an IndexError. What is the cause?",
+    code: `letters = ['a', 'b', 'c']
+print(letters[3])`,
     language: "python",
     correctAnswer: 0,
     options: [
-      "Division by zero - attempting to divide by 0 which is undefined",
-      "Missing error handling with try-except block",
-      "Function parameters need type annotations",
-      "The return statement should be outside the function",
+      "Accessing an index that doesn't exist. The last index is 2.",
+      "Lists in Python are 1-indexed.",
+      "The `print` function cannot be used with lists.",
+      "The list `letters` was not initialized correctly.",
     ],
-    hint: "Check what happens when the second argument is zero.",
+    hint: "List indices start at 0. If a list has 3 items, what are its valid indices?",
   },
   {
-    title: "Java Debug Challenge",
-    text: "This program won't compile. What's missing in the variable declaration?",
-    code: `public class Counter {
+    title: "Java String Comparison",
+    text: "The output is 'Strings are not equal', which is unexpected. Why?",
+    code: `public class Compare {
     public static void main(String[] args) {
-        count = 10;
-        System.out.println("Count: " + count);
+        String s1 = new String("hello");
+        String s2 = new String("hello");
+        if (s1 == s2) {
+            System.out.println("Strings are equal");
+        } else {
+            System.out.println("Strings are not equal");
+        }
     }
 }`,
     language: "java",
-    correctAnswer: 0,
+    correctAnswer: 2,
     options: [
-      "Missing variable type declaration - should be 'int count = 10;'",
-      "Variable should be declared as static final",
-      "Missing access modifier 'private' or 'public'",
-      "Variable name should be 'COUNT' in uppercase",
+      "The `else` statement is incorrect",
+      "The strings have different casing",
+      "The '==' operator compares object references, not content. Use '.equals()' instead.",
+      "You cannot create strings with `new String()`",
     ],
-    hint: "Variables in Java need a type declaration before use.",
+    hint: "In Java, `==` checks if two variables point to the exact same object in memory.",
   },
   {
-    title: "C Debug Challenge",
-    text: "This program will crash when accessing the string. What's wrong with memory management?",
+    title: "C Uninitialized Variable",
+    text: "This program prints a garbage value. What's the problem?",
     code: `#include <stdio.h>
 int main() {
-    char *str;
-    str[0] = 'A';
-    printf("String: %s\\n", str);
+    int count;
+    printf("The count is: %d\n", count);
     return 0;
 }`,
     language: "c",
-    correctAnswer: 0,
+    correctAnswer: 1,
     options: [
-      "Uninitialized pointer - memory not allocated for the string before use",
-      "Pointer should be declared as 'char str[]' instead",
-      "Missing null terminator in the string",
-      "The printf format specifier should be %c instead of %s",
+      "The format specifier should be `%s`",
+      "The variable 'count' is used before it has been given a value",
+      "The `printf` function is used incorrectly",
+      "The program is missing `return 1`",
     ],
-    hint: "Check if the string pointer is allocated memory before use.",
+    hint: "Local variables in C are not automatically initialized to zero.",
   },
   {
-    title: "Python Debug Challenge",
-    text: "This code will raise a TypeError. What's the issue?",
-    code: `greeting = "Hello"
-name = 42
-message = greeting + name`,
+    title: "JavaScript Infinite Loop",
+    text: "This `while` loop will run forever. What is the error?",
+    code: `let i = 0;
+while (i < 5) {
+    console.log(i);
+}`,
+    language: "javascript",
+    correctAnswer: 3,
+    options: [
+      "The condition `i < 5` is always false",
+      "The `console.log` function is too slow",
+      "The variable `i` should be initialized to 1",
+      "The loop variable 'i' is never incremented",
+    ],
+    hint: "For a `while` loop to end, the condition must eventually become false.",
+  },
+  {
+    title: "Python Type Error",
+    text: "This code will raise a TypeError. Why?",
+    code: `age = 25
+print("Your age is " + age)`,
     language: "python",
     correctAnswer: 0,
     options: [
-      "Type mismatch - cannot concatenate string and int, need to convert name to string",
-      "String concatenation should use comma instead of plus",
-      "Variables should be swapped in the concatenation",
-      "Missing space between greeting and name",
+      "Cannot concatenate a string and an integer. `age` must be converted to a string first.",
+      "The `+` operator is for addition only.",
+      "The `print` function is missing an f-string.",
+      "The string is missing a closing quote.",
     ],
-    hint: "Check the types of variables being concatenated.",
+    hint: "You can't add a string and a number together directly. Use `str(age)`.",
   },
   {
-    title: "Java Debug Challenge",
-    text: "This code will throw a NullPointerException. What's causing it?",
+    title: "Java NullPointerException",
+    text: "This code throws a NullPointerException. What is the reason?",
     code: `public class Test {
     public static void main(String[] args) {
-        String text = null;
-        System.out.println(text.length());
+        String name = null;
+        System.out.println("Length: " + name.length());
     }
 }`,
     language: "java",
-    correctAnswer: 0,
+    correctAnswer: 2,
     options: [
-      "Null pointer exception - calling method on null object, text needs to be initialized",
-      "The length() method doesn't exist for String",
-      "Should use text.size() instead of text.length()",
-      "The null keyword should be 'NULL' in uppercase",
+      "The `length()` method is spelled incorrectly",
+      "The `main` method cannot have local variables",
+      "Calling a method on a `null` reference. The 'name' variable was not initialized to an object.",
+      "The `+` operator cannot be used with `null`.",
     ],
-    hint: "Check if the variable is initialized before calling methods on it.",
+    hint: "A variable that is `null` doesn't point to any object, so you can't call methods on it.",
   },
   {
-    title: "C Debug Challenge",
-    text: "This function doesn't return the expected value. What's missing?",
+    title: "C Integer Division",
+    text: "The program prints 'Result: 0.000000' instead of 0.5. Why?",
     code: `#include <stdio.h>
-int add(int a, int b) {
-    a + b;
-}
 int main() {
-    printf("Sum: %d\\n", add(5, 3));
+    float result = 1 / 2;
+    printf("Result: %f\n", result);
+    return 0;
+}`,
+    language: "c",
+    correctAnswer: 1,
+    options: [
+      "The format specifier `%f` is incorrect for floats",
+      "The expression '1 / 2' performs integer division. Use '1.0 / 2.0' instead.",
+      "The variable `result` should be a `double`.",
+      "The `printf` statement is missing a semicolon.",
+    ],
+    hint: "When you divide two integers in C, the result is also an integer (the fractional part is discarded).",
+  },
+  {
+    title: "JavaScript Off-by-One Error",
+    text: "This loop doesn't print the last element of the array. Why?",
+    code: `const fruits = ["apple", "banana", "cherry"];
+for (let i = 0; i < fruits.length - 1; i++) {
+    console.log(fruits[i]);
+}`,
+    language: "javascript",
+    correctAnswer: 0,
+    options: [
+      "The loop condition `i < fruits.length - 1` stops one element too early.",
+      "The array is declared with `const` and cannot be looped over.",
+      "The loop should start with `i = 1`.",
+      "`console.log` cannot be used inside a loop.",
+    ],
+    hint: "If an array has length 3, what is the index of the last element? What is the last value of `i` in this loop?",
+  },
+  {
+    title: "Python Forgetting 'self'",
+    text: "This code fails with a TypeError. What is missing in the method definition?",
+    code: `class Dog:
+    def bark():
+        print("Woof!")
+
+my_dog = Dog()
+my_dog.bark()`,
+    language: "python",
+    correctAnswer: 2,
+    options: [
+      "The class name `Dog` should be lowercase.",
+      "The method `bark` should be named `__bark__`.",
+      "The method `bark` is missing the 'self' parameter.",
+      "You cannot create an instance of a class like this.",
+    ],
+    hint: "The first parameter of any instance method in a Python class is conventionally named `self`.",
+  },
+  {
+    title: "Java Array Index Out of Bounds",
+    text: "This program will throw an ArrayIndexOutOfBoundsException. Why?",
+    code: `public class Numbers {
+    public static void main(String[] args) {
+        int[] nums = new int[5];
+        nums[5] = 10;
+    }
+}`,
+    language: "java",
+    correctAnswer: 3,
+    options: [
+      "The array `nums` was not initialized.",
+      "The value `10` is not an integer.",
+      "The main method cannot contain an array.",
+      "The array has indices 0-4, but the code tries to access index 5.",
+    ],
+    hint: "An array of size 5 has a maximum index of 4.",
+  },
+  {
+    title: "C Missing Ampersand in scanf",
+    text: "This program might crash or behave unexpectedly when the user enters input. Why?",
+    code: `#include <stdio.h>
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", age);
+    printf("You are %d years old.\n", age);
     return 0;
 }`,
     language: "c",
     correctAnswer: 0,
     options: [
-      "Missing return statement - function computes a + b but doesn't return it",
-      "Function should return void instead of int",
-      "The addition operation is incorrect syntax",
-      "Missing parentheses around the addition",
+      "`scanf` requires the memory address of the variable, so it should be `&age`.",
+      "The `%d` format specifier is incorrect.",
+      "The `age` variable was not initialized.",
+      "The `printf` statement is incorrect.",
     ],
-    hint: "Check if the function is actually returning the computed value.",
+    hint: "The `scanf` function needs to know *where* to store the input, not just the current value of the variable.",
+  },
+  {
+    title: "JavaScript Scope Issue with 'var'",
+    text: "The output is '3' three times, not 0, 1, 2. Why?",
+    code: `for (var i = 0; i < 3; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 100);
+}`,
+    language: "javascript",
+    correctAnswer: 1,
+    options: [
+      "The `setTimeout` function is asynchronous.",
+      "The variable 'i', declared with 'var', is function-scoped. By the time the logs run, the loop is finished and 'i' is 3. Using 'let' would fix this.",
+      "The `console.log` function is broken.",
+      "The loop condition is incorrect.",
+    ],
+    hint: "Think about what the value of `i` is *after* the loop has completed.",
+  },
+  {
+    title: "Python Modifying a List While Iterating",
+    text: "The code is supposed to remove all odd numbers, but it doesn't work correctly. Why?",
+    code: `numbers = [1, 2, 3, 4, 5]
+for num in numbers:
+    if num % 2 != 0:
+        numbers.remove(num)
+print(numbers)`,
+    language: "python",
+    correctAnswer: 2,
+    options: [
+      "The `remove` method does not exist for lists.",
+      "The modulo operator `%` is incorrect.",
+      "Modifying a list while iterating over it can skip elements. It's better to create a new list.",
+      "The `if` condition is wrong.",
+    ],
+    hint: "When you remove an item from a list, the indices of the subsequent items shift, causing the loop to skip the next item.",
+  },
+  {
+    title: "Java Integer Overflow",
+    text: "The output is a negative number, which is not the expected sum. Why?",
+    code: `public class Overflow {
+    public static void main(String[] args) {
+        int largeNum1 = 2000000000;
+        int largeNum2 = 2000000000;
+        int sum = largeNum1 + largeNum2;
+        System.out.println("Sum: " + sum);
+    }
+}`,
+    language: "java",
+    correctAnswer: 0,
+    options: [
+      "The sum exceeds the maximum value for an 'int', causing an overflow. Using 'long' would solve this.",
+      "The `+` operator is incorrect for large numbers.",
+      "The variables are not initialized correctly.",
+      "The `println` statement cannot handle large numbers.",
+    ],
+    hint: "An `int` in Java has a maximum value. What happens when you go past it?",
+  },
+  {
+    title: "C Function Missing Return",
+    text: "The sum printed is a garbage value. What is wrong with the `add` function?",
+    code: `#include <stdio.h>
+int add(int a, int b) {
+    int sum = a + b;
+}
+int main() {
+    printf("Sum: %d\n", add(5, 10));
+    return 0;
+}`,
+    language: "c",
+    correctAnswer: 3,
+    options: [
+      "The `sum` variable is not needed.",
+      "The function `add` should be of type `void`.",
+      "The `printf` call is incorrect.",
+      "The function is declared to return an 'int' but does not return a value.",
+    ],
+    hint: "If a function promises to return a value, it must have a `return` statement.",
+  },
+
+  // --- More Subtle Bugs (5 questions) ---
+  {
+    title: "JavaScript Floating-Point Precision",
+    text: "The result is not exactly 0.3. Why is the output 'false'?",
+    code: `console.log(0.1 + 0.2 === 0.3);`,
+    language: "javascript",
+    correctAnswer: 1,
+    options: [
+      "The `===` operator cannot be used for numbers.",
+      "Floating-point math is not always precise in computers, leading to tiny errors.",
+      "The `console.log` statement is incorrect.",
+      "The numbers should be stored in variables first.",
+    ],
+    hint: "Computers store decimal numbers in binary, which can lead to small rounding errors.",
+  },
+  {
+    title: "Python Default Mutable Argument",
+    text: "Calling the function twice produces an unexpected result. Why does the second call print `[1, 2]`?",
+    code: `def add_to_list(item, my_list=[]):
+    my_list.append(item)
+    return my_list
+
+print(add_to_list(1))
+print(add_to_list(2))`,
+    language: "python",
+    correctAnswer: 0,
+    options: [
+      "The default list is created only once and is reused across calls.",
+      "The `append` method is incorrect.",
+      "The `print` function is stateful.",
+      "The function should not have a return value.",
+    ],
+    hint: "Default arguments are evaluated when the function is defined, not when it's called.",
+  },
+  {
+    title: "C String Literal Modification",
+    text: "This program is likely to crash. Why is it unsafe?",
+    code: `#include <stdio.h>
+int main() {
+    char *str = "Hello, World!";
+    str[0] = 'J'; // Attempting to modify a string literal
+    printf("%s\n", str);
+    return 0;
+}`,
+    language: "c",
+    correctAnswer: 2,
+    options: [
+      "The `printf` function cannot print modified strings.",
+      "The variable `str` should be an array `char str[]`.",
+      "String literals are often stored in read-only memory, and modifying them results in undefined behavior.",
+      "The character 'J' is invalid.",
+    ],
+    hint: "Think about where the computer stores the text `\"Hello, World!\"`.",
+  },
+  {
+    title: "Java Character vs String",
+    text: "This code does not compile. What is the type mismatch?",
+    code: `public class Types {
+    public static void main(String[] args) {
+        char initial = "J";
+        System.out.println(initial);
+    }
+}`,
+    language: "java",
+    correctAnswer: 3,
+    options: [
+      "The variable `initial` is not a valid name.",
+      "The `System.out.println` method cannot print characters.",
+      "The `main` method is incorrect.",
+      "A `char` is for a single character and uses single quotes ('J'), while double quotes (\"J\") create a `String`.",
+    ],
+    hint: "Pay close attention to the difference between single quotes and double quotes in Java.",
+  },
+  {
+    title: "JavaScript 'this' in a Callback",
+    text: "The output is 'My name is undefined'. Why?",
+    code: `const person = {
+    name: "Alice",
+    greet: function() {
+        setTimeout(function() {
+            console.log("My name is " + this.name);
+        }, 100);
+    }
+};
+person.greet();`,
+    language: "javascript",
+    correctAnswer: 0,
+    options: [
+      "Inside the `setTimeout` callback, 'this' refers to the global object (or is undefined in strict mode), not the 'person' object. Using an arrow function `() => {}` would fix this.",
+      "The `name` property is private.",
+      "The `setTimeout` function is too fast.",
+      "The `greet` method is defined incorrectly.",
+    ],
+    hint: "The value of `this` depends on how the function is called. Regular functions have their own `this` context.",
   },
 ];
