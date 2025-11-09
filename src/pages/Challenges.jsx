@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Heading, Text, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RiResetLeftFill } from "react-icons/ri";
 import { FaHome } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
@@ -13,10 +13,14 @@ import { AnswerContainer } from "@/components/AnswerContainer";
 import { ResultDialog } from "@/components/ResultDialog";
 
 const Challenges = () => {
-  const [currentChallenge, setCurrentChallenge] = useState(
-    Math.floor(Math.random() * challenges.length)
+  const [shuffledIndices, setShuffledIndices] = useState(() =>
+    [...Array(challenges.length).keys()].sort(() => Math.random() - 0.5)
   );
-  const [visited, setVisited] = useState([]);
+  const [questionPointer, setQuestionPointer] = useState(0);
+
+  const [currentChallenge, setCurrentChallenge] = useState(
+    shuffledIndices[questionPointer]
+  );
   const [progress, setProgress] = useState(1);
   const [answer, setAnswer] = useState("");
   const [currentHintState, setCurrentHintState] = useState({
@@ -30,6 +34,10 @@ const Challenges = () => {
   });
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  useEffect(() => {
+    setCurrentChallenge(shuffledIndices[questionPointer]);
+  }, [questionPointer, shuffledIndices]);
+
   const accuracy =
     attemptsInfo.totalAttempts === 0
       ? 0
@@ -42,6 +50,26 @@ const Challenges = () => {
   };
 
   const MAX_LENGTH = 5;
+
+  const advanceToNextChallenge = () => {
+    setQuestionPointer((prevPointer) => {
+      let nextPointer = prevPointer + 1;
+      if (nextPointer >= shuffledIndices.length) {
+        toaster.create({
+          title:
+            "You've completed all challenges! The question pool has been reset.",
+          type: "info",
+          closable: true,
+        });
+        const newShuffled = [...Array(challenges.length).keys()].sort(
+          () => Math.random() - 0.5
+        );
+        setShuffledIndices(newShuffled);
+        nextPointer = 0;
+      }
+      return nextPointer;
+    });
+  };
 
   const handleSubmitAnswer = () => {
     const userAnswer = answer.trim();
@@ -81,30 +109,15 @@ const Challenges = () => {
       closable: true,
     });
 
-    setVisited((prevVisited) => {
-      const updatedVisited = [...prevVisited, currentChallenge];
-
-      setProgress(Math.min(updatedVisited.length + 1, MAX_LENGTH));
-
-      if (updatedVisited.length >= MAX_LENGTH) {
-        setTimeout(() => {
-          toaster.dismiss(); // Dismiss all toasts
-          setIsDialogOpen(true); // Open dialog
-        }, 0);
-        return updatedVisited;
-      }
-
-      const remaining = challenges
-        .map((_, i) => i)
-        .filter((i) => !updatedVisited.includes(i));
-
-      if (remaining.length > 0) {
-        const next = remaining[Math.floor(Math.random() * remaining.length)];
-        setCurrentChallenge(next);
-      }
-
-      return updatedVisited;
-    });
+    if (progress >= MAX_LENGTH) {
+      setTimeout(() => {
+        toaster.dismiss(); // Dismiss all toasts
+        setIsDialogOpen(true); // Open dialog
+      }, 0);
+    } else {
+      setProgress((prev) => prev + 1);
+      advanceToNextChallenge();
+    }
 
     setAnswer("");
     setCurrentHintState({
@@ -114,9 +127,23 @@ const Challenges = () => {
     });
   };
 
-  const handleResetChallenge = () => {
-    setCurrentChallenge(Math.floor(Math.random() * challenges.length));
-    setVisited([]);
+  const handlePlayAgain = () => {
+    setProgress(1);
+    setAttemptsInfo({
+      totalAttempts: 0,
+      correctAttempts: 0,
+    });
+    setIsDialogOpen(false);
+    advanceToNextChallenge();
+  };
+
+  const handleReset = () => {
+    const newShuffled = [...Array(challenges.length).keys()].sort(
+      () => Math.random() - 0.5
+    );
+    setShuffledIndices(newShuffled);
+    setQuestionPointer(0);
+
     setAnswer("");
     setProgress(1);
     setCurrentHintState({
@@ -189,7 +216,7 @@ const Challenges = () => {
             <Flex direction="row" gap={2} order={{ base: 1, lg: 3 }}>
               <Button
                 variant="outline"
-                onClick={handleResetChallenge}
+                onClick={handleReset}
                 borderRadius="md"
                 size={{ base: "xs", md: "sm" }}
                 color="purple.300"
@@ -337,7 +364,7 @@ const Challenges = () => {
           isOpen={isDialogOpen}
           onClose={() => setIsDialogOpen(false)}
           accuracy={accuracy}
-          onPlayAgain={handleResetChallenge}
+          onPlayAgain={handlePlayAgain}
         />
       </FadeContent>
     </Container>
