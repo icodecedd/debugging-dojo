@@ -76,6 +76,12 @@ export const MultipleChoiceContainer = ({
           e.preventDefault();
           handleSubmitAnswer();
         }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && selectedAnswer !== "") {
+            e.preventDefault();
+            handleSubmitAnswer();
+          }
+        }}
       >
         <RadioGroup.Root
           value={selectedAnswer}

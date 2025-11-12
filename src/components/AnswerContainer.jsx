@@ -101,7 +101,7 @@ export const AnswerContainer = ({
             boxShadow: "0 0 0 1px rgba(128, 90, 213, 0.5)",
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && e.ctrlKey) {
+            if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
               handleSubmitAnswer();
             }
